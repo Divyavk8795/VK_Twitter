@@ -1,0 +1,42 @@
+{% set id = post.id %}
+<a href="/post/{{post.id}}" class="has-text-dark">
+    <div class="box" id="{{id}}">
+        <div style="display: flex;">
+        <article class="media">           
+            <figure class="media-left">
+                <p class="image is-64x64">
+                    {% set profile_pic = url_for('static', filename='profile_pics/' + post.author.image_file) %}
+                    <img src="{{ profile_pic }}" style="width: 64px; height: 64px;" class="profile">
+                </p>
+            </figure>
+            <div class="media-content">
+                <div class="content">
+                    <p style="margin-bottom: .8rem;">
+                        <strong class="has-text-info">@{{post.author.username}}         
+                        </strong> 
+                        {% if post.author.id == session.user_id %}
+                        <a href="{{ url_for('delete_tweet',post_id=post.id) }}" style="margin: 10px 10px;">
+                            <i class="fa fa-trash" ></i>
+                        </a>
+                        {% else %}
+                        <a href="#" " title="Not authorized!" style="background-color:#FFFFFF;color:#000000;text-decoration:none;margin: 10px 10px;">
+                            <i class="fa fa-trash" ></i>
+                        </a>
+                        {% endif%}
+                        <a href="{{ url_for('save_post',post_id=post.id) }}">
+                            <i class="fa fa-bookmark" ></i>
+                        </a>                      
+                        <p style="font-size: 12px; margin-top: 5px;">
+                        <span style="font-weight: bold; color: dodgerblue;">Posted on </span>
+                        <small
+                            class="has-text-weight-semibold">{{post.date_posted.strftime('%B %d, %Y')}}</small>
+                        </p>
+                        <br>                       
+                        <p style="margin-bottom: .8rem;">{{post.content}}</p>
+                    </p>
+                </div>        
+            </div>            
+        </article>
+    </div>
+    </div>
+</a>

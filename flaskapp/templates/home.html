@@ -1,0 +1,94 @@
+{% extends 'layout.html' %}
+{% block body %} 
+<div class="columns">
+    <div class="column is-one-quarter is-hidden-touch">
+        {% if user != None %}
+        <div class="wrap" style="position: -webkit-sticky; position: sticky; top: 0;">
+            <h2 class="title is-2" style="margin-left:50px;">Profile</h2>
+            <div class="box">
+                <div class="columns">
+                    {% set profile_pic = url_for('static', filename='profile_pics/images.png') %}
+                    <div class="column is-one-third">
+                        <img src="{{ profile_pic }}" width="80" class="profile">
+                    </div>
+                    <div class="column">    
+                        <h1 class="greeting">Welcome @{{ session.username }}!</h1>                    
+                        <h3 class="subtitle is-6" style="margin-bottom: 1rem; font-size: 80%;">{{ user.email }}</h6>
+                        <div class="level">
+                            <div class="level-left">
+                                <div class="content is-small">
+                                    <small>Tweets</small>
+                                    {% set user_posts = Post_model.query.filter_by(user_id=user.id).all() %}
+                                    <h4 class="has-text-info" style="margin-bottom: 0;">{{ user_posts|length }}</h4>
+                                </div>
+                            </div>   
+                            <div class="level-right">
+                                <div class="content is-small">
+                                    <small>Bookmarked</small>
+                                    {% set user_posts = Bookmark_model.query.filter_by(user_id=user.id).all() %}
+                                    <h4 class="has-text-info" style="margin-bottom: 0;">{{ user_posts|length }}</h4>
+                                </div>
+                            </div>                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="column is-half">
+        <div class="level is-hidden-touch">
+            <div class="level-left">
+                <h2 class="title is-2" style="margin-left:220px;">Tweets</h2>
+            </div>            
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-item">
+                    <span class="icon has-text-info">
+                        <i class="fas fa-lg fa-sort"></i>
+                    </span>
+                </a>
+                <div class="navbar-dropdown">
+                    <a class="navbar-item has-text-info" href="{{ url_for('sortAsc') }}">
+                        <i class="fas fa-arrow-down"></i> Ascending
+                    </a>
+                    <a class="navbar-item has-text-info" href="{{ url_for('sortDesc') }}">
+                        <i class="fas fa-arrow-up"></i> Descending
+                    </a>
+                </div>
+            </div>
+            <a class="navbar-item has-text-info" href="{{ url_for('filter') }}">                
+                <i class="fa-lg fa fa-filter"></i>
+            </span>
+            </a>            
+        </div>
+        {% for post in posts|reverse %}
+        {% include "includes/_post.html" %}
+        {% endfor %}
+    </div>
+    <div class="column is-one-quarter is-hidden-touch">
+        <div class="wrap" style="position: -webkit-sticky; position: sticky; top: 0;">
+            <h2 class="title is-2" style="margin-left:50px;">Follow</h2>
+            <div class="box">
+                {% for suggestion in follow_suggestions %}
+                <div class="columns is-vcentered" style="margin-top: 2px; margin-bottom: 2px;">
+                    <div class="column is-one-third">
+                        <img src="{{ url_for('static', filename='profile_pics/' + suggestion.image_file) }}"
+                            alt="{{ suggestion.username }}" class="profile" width="60">
+                    </div>
+                    <div class="column">
+                        <h2 class="title is-6 has-text-info">{{ suggestion.username }}</h2>
+                    </div>                   
+                </div>               
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+{% endblock %}

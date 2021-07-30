@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block body %}
+<h1 class="title is-1">{{title}}</h1>
+<form action="" method="POST">
+    <div class="control" style="width: 45%; margin-bottom: 1.5rem;">
+        <label for="content">Content</label>
+        <input type="text" name="content" class="textarea" value="{{request.form.content}}">
+    </div>
+    <input type="submit" value="Post" class="button is-info is is-medium">
+</form>
+{% endblock %}

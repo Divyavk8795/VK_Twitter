@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="level-left">
+    <div class="field has-addons" style="margin: .5rem 6rem 0 0;">
+        <p class="control">
+            <a class="button has-background-info has-text-white has-text-weight-bold"
+                href="{{ url_for('home') }}">
+                <span> Back </span>
+            </a>
+        </p>             
+    </div>
+</div>
+<div class="has-text-centered">
+    <h1 class="title is-2 is-centered">Something went wrong...</h1>
+    <br>
+    <img src="{{ url_for('static', filename='graphics/' + 'download.png') }}" alt="Error 404" width="500">
+    <br><br><br>
+    <h1 class="title is-2">
+        Maybe you should just use <a href="https://twitter.com">Twitter</a> instead.
+    </h1>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+TASKS
+
+python -m pip install --upgrade pip
+python -m pip install flask
+python -m venv env
+env\Scripts\Activate.ps1
+Create a basic flask code
+pip install flask_sqlalchemy
+Create SqlLiteDB
+pip install passlib for encryption
+pip install wtforms

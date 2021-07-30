@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="level-left">
+    <div class="field has-addons" style="margin: .5rem 6rem 0 0;">
+        <p class="control">
+            <a class="button has-background-info has-text-white has-text-weight-bold"
+                href="{{ url_for('home') }}">
+                <span> Back </span>
+            </a>
+        </p>             
+    </div>
+</div>
+<div class="columns is-centered">   
+    <div class="column is-half">
+        <div class="level is-hidden-touch">
+            <div class="level-left">
+                <h2 class="title is-2" style="font-size: 2rem;">{{title}}</h2>
+            </div>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-item">
+                    <span class="icon has-text-info">
+                        <i class="fas fa-lg fa-sort"></i>
+                    </span>
+                </a>
+                <div class="navbar-dropdown">
+                    <a class="navbar-item has-text-info" href="{{ url_for('sortAsc') }}">
+                        <i class="fas fa-arrow-down"></i> Ascending
+                    </a>
+                    <a class="navbar-item has-text-info" href="{{ url_for('sortDesc') }}">
+                        <i class="fas fa-arrow-up"></i> Descending
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% for post in posts %}
+        {% include "includes/_post.html" %}
+        {% endfor %}
+    </div>    
+</div> 
+{% endblock %}
+<ul>
+    {% for post in posts %}
+    <li>{{ post }}</li>
+    {% endfor %}
+</ul>

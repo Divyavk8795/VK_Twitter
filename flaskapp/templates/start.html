@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/start.css') }}">    
+</head>
+<body>
+    <div class="image-bg">
+        <div class="container">
+            <div class="intro">Twitter Stream <br> By @DivyaVK </div><br><br>    
+            <p><h2 style="margin-left: 150px;">Python Web App Using Flask!! </h3></p>  
+            <p><h4 style="margin-left: 150px;">Tech Used : Python3 + Flask + Sql Alchemy + Docker + AWS</h4></p>  
+            <div class="about">
+                <ul>
+                    <li><img class="icons" src="https://image.flaticon.com/icons/svg/3176/3176330.svg"> Follow your interest</li>
+                    <li><img src="https://image.flaticon.com/icons/svg/615/615075.svg" class="icons">Hear what people are talking about</li>
+                    <li><img src="https://image.flaticon.com/icons/svg/3094/3094824.svg" class="icons">Join the conversation</li>
+                </ul>
+            </div>
+        </div>                   
+    </div>
+    <div class="user-bg">
+        <div class="container">
+            <img src="{{ url_for('static', filename='Images/SVG/twitter.svg') }}" class="twitter">
+            <div class="intro">See what's happening in <br> the world right now</div><br><br>
+            <div class="navbar-item" style="margin: 2%;">
+                <p style="margin-left: 150px;">Join Twitter today</p>  
+            <p style="margin-left: 150px;">
+                <a href="{{ url_for('register') }}" class="login_btn">Sign Up</a>
+            </p> 
+            </div>
+            <div class="navbar-item" style="margin: 2%;">     
+            <p style="margin-left: 150px;">Already have an account?  </p> 
+            <p style="margin-left: 150px;">
+                <a href="{{ url_for('login') }}" class="login_btn">Login</a>
+            </p>
+        </div>                        
+            </div>
+        </div>
+    </div>
+</body>
+</html>

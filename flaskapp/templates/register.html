@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block body %}
+<h1 class="title is-1">Create your account</h1>
+<form action="" method="POST" style="width: 45%;">
+    <div class="control" style="margin-bottom: 1.5rem;">
+        <label for="username">Username</label>
+        <input type="text" name="username" class="input" value="{{request.form.username}}">
+    </div>
+    <div class="control" style="margin-bottom: 1.5rem;">
+        <label for="email">Email</label>
+        <input type="text" name="email" class="input" value="{{request.form.email}}">
+    </div>
+    <div class="control" style="margin-bottom: 1.5rem;">
+        <label for="password">Password</label>
+        <input type="password" name="password" class="input" value="{{request.form.password}}">
+    </div>
+    <div class="control" style="margin-bottom: 1.5rem;">
+        <label for="password">Confirm Password</label>
+        <input type="password" name="confirm" class="input" value="{{request.form.confirm}}">
+    </div>
+    <input type="submit" value="Submit" class="button is-info">
+</form>
+{% endblock %}
